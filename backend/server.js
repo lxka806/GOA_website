@@ -14,7 +14,7 @@ const projectRouter = require('./routes/project.routes')
 
 const app = express()
 
-const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
+const CLIENT_URL = process.env.CLIENT_URL || "https://goa-academy-luka.netlify.app/";
 
 app.use(cors({
     origin: CLIENT_URL,
