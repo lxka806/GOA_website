@@ -1,5 +1,6 @@
 const express = require("express")
 const dotenv = require("dotenv")
+const cors = require("cors")
 dotenv.config()
 const PORT = process.env.PORT
 const mongoose = require("mongoose")
@@ -13,16 +14,15 @@ const projectRouter = require('./routes/project.routes')
 
 const app = express()
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", process.env.CLIENT_URL || "http://localhost:5173");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH, OPTIONS");
-    res.header("Access-Control-Allow-Credentials", "true");
-    if (req.method === "OPTIONS") {
-        return res.sendStatus(200);
-    }     
-    next();
-});
+const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
+app.use(cors({
+    origin: CLIENT_URL,
+    credentials: true,
+}));
+app.options("*", cors({
+    origin: CLIENT_URL,
+    credentials: true,
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
