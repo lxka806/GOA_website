@@ -521,13 +521,6 @@ function Projects() {
                         </button>
                       </>
                     )}
-
-                    <Link 
-                      to={`/projects/${project._id}`} 
-                      className="ml-auto text-sm text-green-400 hover:text-green-300 transition-colors"
-                    >
-                      View Details →
-                    </Link>
                   </div>
                 </div>
               </div>
