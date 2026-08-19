@@ -17,7 +17,7 @@ const app = express()
 const CLIENT_URL = process.env.CLIENT_URL;
 
 app.use(cors({
-    origin: "https://goa-academy-luka.netlify.app",
+    origin: true,
     credentials: true,
 }));
 
