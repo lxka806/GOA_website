@@ -113,12 +113,6 @@ function Login() {
                 <label className="block text-xs sm:text-sm text-gray-300 font-medium">
                   Password
                 </label>
-                <Link 
-                  to="/forgot-password" 
-                  className="text-[10px] sm:text-xs text-green-400 hover:text-green-300 transition-colors"
-                >
-                  Forgot password?
-                </Link>
               </div>
               <div className="relative">
                 <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">
