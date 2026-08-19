@@ -14,10 +14,10 @@ const projectRouter = require('./routes/project.routes')
 
 const app = express()
 
-const CLIENT_URL = process.env.CLIENT_URL || "https://goa-academy-luka.netlify.app";
+const CLIENT_URL = process.env.CLIENT_URL;
 
 app.use(cors({
-    origin: true,
+    origin: CLIENT_URL,
     credentials: true,
 }));
 
