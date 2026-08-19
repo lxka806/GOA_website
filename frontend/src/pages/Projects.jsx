@@ -37,10 +37,16 @@ function Projects() {
     image: null,
   });
 
+  const getProjects = (data) => {
+    if (Array.isArray(data)) return data;
+    if (Array.isArray(data?.projects)) return data.projects;
+    return [];
+  };
+
   useEffect(() => {
     api
       .get("/api/projects")
-      .then((data) => setProjects(data))
+      .then((data) => setProjects(getProjects(data)))
       .catch((err) => setMessage(err.message));
   }, []);
 
@@ -95,7 +101,7 @@ function Projects() {
       description: project.description || "",
       github: project.github || "",
       liveDemo: project.liveDemo || "",
-      technologies: project.technologies?.join(", ") || "",
+      technologies: Array.isArray(project.technologies) ? project.technologies.join(", ") : project.technologies || "",
       image: null,
     });
   };
@@ -464,7 +470,7 @@ function Projects() {
                   </p>
 
                   {/* Technologies */}
-                  {project.technologies?.length > 0 && (
+                  {Array.isArray(project.technologies) && project.technologies.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 mt-4">
                       {project.technologies.map((tech, i) => (
                         <span 
